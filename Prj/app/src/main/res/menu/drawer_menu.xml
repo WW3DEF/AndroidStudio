@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="홈" />
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_profile"
+            android:title="프로필" />
+        <item
+            android:id="@+id/nav_edit"
+            android:icon="@drawable/ic_edit"
+            android:title="프로필 수정" />
+    </group>
+    <item android:title="More">
+        <menu>
+            <item
+                android:id="@+id/nav_delete"
+                android:icon="@drawable/ic_delete"
+                android:title="회원탈퇴" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_logout"
+                android:title="로그아웃" />
+        </menu>
+    </item>
+
+</menu>
