@@ -3,12 +3,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/holo_blue_light">
-    
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="profile Fragment"
-        android:textSize="30dp"
-        android:layout_centerInParent="true"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="30dp"
+                android:src="@drawable/ic_profile"/>
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:textSize="40dp"
+                android:text="프로필"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tVId"
+            android:layout_width="330dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="20dp"
+            android:layout_height="40dp"
+            android:text="아이디"
+            android:gravity="center_vertical"
+            android:layout_marginTop="200dp"/>
+
+        <TextView
+            android:id="@+id/tVUname"
+            android:layout_width="330dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="20dp"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:text="사용자명" />
+
+        <TextView
+            android:id="@+id/tVPwd"
+            android:layout_width="330dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="20dp"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:text="비밀번호" />
+    </LinearLayout>
 
 </RelativeLayout>

@@ -42,7 +42,6 @@ public class Signup extends AppCompatActivity {
                     dataInsert(sql);
                     Toast.makeText(Signup.this, "회원가입 완료", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.putExtra("id", id);
                     startActivity(intent);
                 } else if(idStringEmpty(id) == true) {
                     Toast.makeText(Signup.this, "아이디를 입력해주세요", Toast.LENGTH_SHORT).show();
