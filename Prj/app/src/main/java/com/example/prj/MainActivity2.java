@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,49 +23,55 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
+    DrawerLayout drawerLayout;
     TextView id, nickname;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        TextView tVname = findViewById(R.id.drawnickname);
-        TextView tVid = findViewById(R.id.drawid);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        drawer = findViewById(R.id.drawer_layout);
-        Intent intent = getIntent();
-        String id = intent.getStringExtra("id");
-        String name = intent.getStringExtra("name");
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
 
-        ActionBarDrawerToggle toggle =  new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        drawerLayout = findViewById(R.id.drawer_layout);
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+        drawer = findViewById(R.id.drawer_layout);
+
+//        NavigationView navigationView = findViewById(R.id.nav_view);
+//        navigationView.setNavigationItemSelectedListener(this);
+
+//        ActionBarDrawerToggle toggle =  new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+//        drawer.addDrawerListener(toggle);
+//        toggle.syncState();
 
         if(savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-            navigationView.setCheckedItem(R.id.nav_home);
+//            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+//            navigationView.setCheckedItem(R.id.nav_home);
         }
+
+        SessionManager sessionManager = new SessionManager(getApplicationContext());
+        TextView tvName = findViewById(R.id.tvName);
+        TextView tvId = findViewById(R.id.tvId);
+
+        tvName.setText(sessionManager.getName());
+        tvId.setText(sessionManager.getId());
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_home:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
                 break;
             case R.id.nav_profile:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
                 break;
             case R.id.nav_edit:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new EditFragment()).commit();
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new EditFragment()).commit();
                 break;
             case R.id.nav_delete:
-                showDeleteDialog();
+//                showDeleteDialog();
                 break;
             case R.id.nav_logout:
-                showLogoutDialog();
+//                showLogoutDialog();
                 break;
         }
 
@@ -91,7 +98,7 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
         msgDlg.show();
     }
     void showLogoutDialog() {
-        AlertDialog.Builder msgBrilder = new AlertDialog.Builder(MainActivity2.this)
+        AlertDialog.Builder msgBuilder = new AlertDialog.Builder(MainActivity2.this)
                 .setTitle("로그아웃")
                 .setMessage("로그아웃 하시겠습니까?")
                 .setPositiveButton("로그아웃", new DialogInterface.OnClickListener() {
@@ -135,6 +142,46 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+
+    public static void redirectActivity(Activity activity, Class aClass) {
+        Intent intent = new Intent(activity,aClass);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        System.out.println("hello");
+        activity.startActivity(intent);
+    }
+    public void ClickMenu(View view){
+        openDrawer(drawerLayout);
+    }
+    public static void openDrawer(DrawerLayout drawerLayout) {
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+    public static void closeDrawer(DrawerLayout drawerLayout) {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+    }
+    protected void onPause(){
+        super.onPause();
+        closeDrawer(drawerLayout);
+    }
+
+    public void ClickHome(View view){
+        redirectActivity(this, MainActivity2.class);
+    }
+    public void ClickProfile(View view){
+        redirectActivity(this, ProfileFragment.class);
+    }
+    public void ClickProfileEdit(View view){
+        redirectActivity(this, EditFragment.class);
+    }
+    public void ClickDelete(View view){
+        showDeleteDialog();
+    }
+    public void ClickLogout(View view){
+        showLogoutDialog();
     }
 
 }

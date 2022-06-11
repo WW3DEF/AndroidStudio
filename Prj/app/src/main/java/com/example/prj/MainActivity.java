@@ -83,9 +83,15 @@ public class MainActivity extends AppCompatActivity {
                               @Override
                               public void run() {
                                  if(id.equals(sResult[0]) && pwd.equals(sResult[2])) {
+                                     SessionManager sessionManager = new SessionManager(getApplicationContext());
+                                     sessionManager.setId(sResult[0]);
+                                     sessionManager.setPwd(sResult[2]);
+                                     sessionManager.setName(sResult[1]);
+
                                      Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
-                                     intent.putExtra("id", sResult[0]);
-                                     intent.putExtra("name", sResult[1]);
+//                                     intent.putExtra("id", sResult[0]);
+//                                     intent.putExtra("name", sResult[1]);
+//                                     intent.putExtra("pwd", sResult[2]);
                                      startActivity(intent);
                                      Toast.makeText(MainActivity.this, "로그인했습니다", Toast.LENGTH_SHORT).show();
                                  } else {

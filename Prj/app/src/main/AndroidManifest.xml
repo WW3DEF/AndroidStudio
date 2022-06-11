@@ -14,9 +14,14 @@
         android:theme="@style/Theme.Prj"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".EditFragment"
+            android:exported="false"/>
+        <activity
+            android:name=".ProfileFragment"
+            android:exported="false"/>
+        <activity
             android:name=".MainActivity2"
-            android:exported="false"
-            android:theme="@style/Theme.Prj.NoActionBar"/>
+            android:exported="false"/>
         <activity
             android:name=".Signup"
             android:exported="false" />
