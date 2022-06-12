@@ -12,6 +12,8 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,10 +23,17 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 public class MainActivity2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
     DrawerLayout drawerLayout;
     TextView id, nickname;
+    Handler handler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,7 +94,9 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
                 .setPositiveButton("탈퇴", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        TextView tvId = findViewById(R.id.tvId);
+                        String tI = tvId.getText().toString().trim();
+                        dataDelete(tI);
                     }
                 })
                 .setNegativeButton("취소", new DialogInterface.OnClickListener() {
@@ -104,6 +115,7 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
                 .setPositiveButton("로그아웃", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(MainActivity2.this, "로그아웃", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     }
                 })
@@ -183,5 +195,46 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
     public void ClickLogout(View view){
         showLogoutDialog();
     }
+    public void dataDelete(String id) {
+        new Thread() {
+            public void run() {
+                try {
+                    URL url = new URL("http://10.0.2.2/userdelete.php");
+                    HttpURLConnection http;
+                    http = (HttpURLConnection) url.openConnection();
 
+                    http.setDefaultUseCaches(false);
+                    http.setDoInput(true);
+                    http.setRequestMethod("POST");
+                    http.setRequestProperty("content-type", "application/x-www-form-urlencoded");
+
+                    StringBuffer buffer = new StringBuffer();
+                    buffer.append("name").append("=").append(id);
+
+                    String str;
+                    str = buffer.toString();
+                    OutputStreamWriter osw = new OutputStreamWriter(http.getOutputStream(), "utf8");
+                    osw.write(str);
+                    osw.flush();
+                    Log.e("검색 모듈", "서버로 데이터 전달완료" + str);
+                    InputStreamReader isr = new InputStreamReader(http.getInputStream(), "utf8");
+                    BufferedReader reader = new BufferedReader(isr);
+
+
+                    StringBuilder builder = new StringBuilder();
+                        String resultData = builder.toString();
+                        final String[] sResult = resultData.split("/");
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(MainActivity2.this, "탈퇴완료", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            }
+                        });
+                } catch (Exception e) {
+                    Log.e("검색 모듈", "서버로 데이터 전달 실패");
+                }
+            }
+        }.start();
+    }
 }

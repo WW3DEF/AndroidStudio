@@ -24,35 +24,124 @@
                 android:layout_height="50dp"
                 android:src="@drawable/ic_list"
                 android:onClick="ClickMenu"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Wiki"
-                android:textSize="30dp"
-                android:layout_gravity="center_vertical"
-                android:textStyle="bold"
-                android:layout_marginLeft="15dp"/>
+            <EditText
+                android:id="@+id/etSearch"
+                android:layout_width="210dp"
+                android:layout_height="50dp"
+                android:hint="문서명을 입력해주세요"
+                android:layout_marginLeft="30dp"/>
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/ic_search"
-                android:layout_marginLeft="170dp"/>
+                android:onClick="ClickSearch"/>
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/ic_noteadd" />
-
-
+                android:src="@drawable/ic_noteadd"
+                android:onClick="ClicKNoteAdd"/>
         </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Home"
-            android:textSize="50sp"
-            android:textStyle="bold"
-            android:gravity="center"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="30dp">
 
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_book" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WIKI"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="30dp"
+                android:textSize="50dp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#636363"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="여러분이 가꾸어 나가는 지식 사전"
+            android:textSize="21dp"
+            android:layout_gravity="center_horizontal"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="위키에 오신것을 환영합니다"
+            android:layout_marginTop="10dp"
+            android:textSize="18dp"
+            android:layout_gravity="center_horizontal"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="위키는 계정이 있다면 누구나 기여할 수 있습니다."
+            android:layout_marginTop="30dp"
+            android:textSize="18dp"
+            android:layout_gravity="center_horizontal"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="검증되지 않았거나 편향된 내용이 있을 수 있습니다."
+            android:layout_marginTop="10dp"
+            android:textSize="18dp"
+            android:layout_gravity="center_horizontal"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#636363"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_help"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="위키에 처음 오셨나요?"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:textSize="25dp"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="문서검색하기"
+            android:textSize="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="15dp"
+            android:text="등록된 문서를 검색하려면 상단의 검색창에 문서명을 입력하시고, 검색 아이콘을 클릭해주세요."/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="문서등록하기"
+            android:textSize="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="15dp"
+            android:text="문서를 등록하려면 상단의 검색 아이콘 옆 문서등록 아이콘을 클릭해주세요."/>
     </LinearLayout>
 
     <RelativeLayout
@@ -61,8 +150,7 @@
         android:layout_gravity="start"
         android:background="@color/white">
 
-        <include
-            layout="@layout/navigation_layout"/>
+        <include layout="@layout/navigation_layout" />
     </RelativeLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>
