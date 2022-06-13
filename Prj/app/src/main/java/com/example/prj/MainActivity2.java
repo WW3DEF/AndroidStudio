@@ -29,7 +29,7 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class MainActivity2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity2 extends AppCompatActivity {
     private DrawerLayout drawer;
     DrawerLayout drawerLayout;
     TextView id, nickname;
@@ -63,29 +63,6 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
         tvId.setText(sessionManager.getId());
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.nav_home:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-                break;
-            case R.id.nav_profile:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
-                break;
-            case R.id.nav_edit:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new EditFragment()).commit();
-                break;
-            case R.id.nav_delete:
-//                showDeleteDialog();
-                break;
-            case R.id.nav_logout:
-//                showLogoutDialog();
-                break;
-        }
-
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
     void showDeleteDialog() {
         AlertDialog.Builder msgBuilder = new AlertDialog.Builder(MainActivity2.this)
                 .setTitle("회원탈퇴")
@@ -136,24 +113,7 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.appbar_action, menu);
-        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-        searchView.setMaxWidth(Integer.MAX_VALUE);
-        searchView.setQueryHint("문서명을 검색해주세요");
 
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if(id == R.id.action_search) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
 
 

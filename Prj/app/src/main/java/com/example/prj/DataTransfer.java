@@ -5,19 +5,12 @@ import android.graphics.drawable.Drawable;
 public class DataTransfer {
     private String docNum;
     private String docTitle;
-    private Drawable docClass;
+    private String docClass;
     private String docSummary;
+    private String docExplain;
     private String docDate;
 
-
-    public DataTransfer(String docNum, String docTitle, Drawable docClass, String docSummary, String docDate) {
-        this.docNum = docNum;
-        this.docTitle = docTitle;
-        this.docClass = docClass;
-        this.docSummary = docSummary;
-        this.docDate = docDate;
-    }
-    public DataTransfer() {
+    public DataTransfer(){
 
     }
 
@@ -37,11 +30,11 @@ public class DataTransfer {
         this.docTitle = docTitle;
     }
 
-    public Drawable getDocClass() {
+    public String getDocClass() {
         return docClass;
     }
 
-    public void setDocClass(Drawable docClass) {
+    public void setDocClass(String docClass) {
         this.docClass = docClass;
     }
 
@@ -51,6 +44,14 @@ public class DataTransfer {
 
     public void setDocSummary(String docSummary) {
         this.docSummary = docSummary;
+    }
+
+    public String getDocExplain() {
+        return docExplain;
+    }
+
+    public void setDocExplain(String docExplain) {
+        this.docExplain = docExplain;
     }
 
     public String getDocDate() {

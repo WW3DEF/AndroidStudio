@@ -85,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
                                  if(id.equals(sResult[0]) && pwd.equals(sResult[2])) {
                                      SessionManager sessionManager = new SessionManager(getApplicationContext());
                                      sessionManager.setId(sResult[0]);
-                                     sessionManager.setPwd(sResult[2]);
                                      sessionManager.setName(sResult[1]);
+                                     sessionManager.setPwd(sResult[2]);
 
                                      Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
                                      startActivity(intent);

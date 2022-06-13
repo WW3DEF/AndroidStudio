@@ -62,6 +62,8 @@ public class NoteAdd extends AppCompatActivity {
                 String sql = tt + "/" + sp + "/" + sm + "/" + ex + "/" + time;
                 System.out.println(sql);
                 dataInsert(sql);
+                Toast.makeText(NoteAdd.this, "작성완료", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), MainActivity2.class));
             }
         });
     }

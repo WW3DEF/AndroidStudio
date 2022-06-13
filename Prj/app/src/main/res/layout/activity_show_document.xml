@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NoteAdd">
+    tools:context=".ShowDocument">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,7 +22,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="문서작성"
+                android:text="문서"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:layout_marginHorizontal="10dp"
@@ -32,7 +32,7 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="200dp"
                 android:src="@drawable/ic_backspace"
-                android:onClick="ClickBackHome"/>
+                android:onClick="ClickBackSearchResult"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -47,11 +47,11 @@
                 android:textSize="20dp"
                 android:layout_margin="30dp"
                 android:textStyle="bold"/>
-            <EditText
-                android:id="@+id/docTitle"
+            <TextView
+                android:id="@+id/docViewTitle"
                 android:layout_width="224dp"
                 android:layout_height="wrap_content"
-                android:hint="문서명을 입력해주세요"
+                android:text="문서명"
                 android:layout_gravity="center"/>
         </LinearLayout>
         <LinearLayout
@@ -65,17 +65,47 @@
                 android:textStyle="bold"
                 android:layout_margin="30dp"
                 android:textSize="20dp"/>
-            <Spinner
-                android:id="@+id/noteSpinner"
-                android:layout_width="140dp"
+            <TextView
+                android:id="@+id/docViewClass"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="30dp"/>
+                android:text="문서주제"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="문서 번호"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:textSize="20dp"/>
+            <TextView
+                android:id="@+id/docViewNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:text="문서 번호"/>
         </LinearLayout>
-        <Button
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="등록하기"
-            android:id="@+id/btnUpload"/>
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="작성일"
+                android:textStyle="bold"
+                android:layout_margin="30dp"
+                android:textSize="20dp"/>
+            <TextView
+                android:id="@+id/docViewDate"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="작성일"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -89,12 +119,11 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:background="#636363"/>
-        <EditText
-            android:id="@+id/docSummary"
+        <TextView
+            android:id="@+id/docViewSummary"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:gravity="top"
-            android:hint="개요 작성" />
+            android:layout_height="70dp"
+            android:text="개요" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -109,11 +138,10 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:background="#636363"/>
-        <EditText
-            android:id="@+id/docExplain"
+        <TextView
+            android:id="@+id/docViewExplain"
             android:layout_width="match_parent"
-            android:layout_height="170dp"
-            android:gravity="top"
-            android:hint="설명 작성" />
+            android:layout_height="130dp"
+            android:text="설명" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
