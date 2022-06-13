@@ -89,9 +89,6 @@ public class MainActivity extends AppCompatActivity {
                                      sessionManager.setName(sResult[1]);
 
                                      Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
-//                                     intent.putExtra("id", sResult[0]);
-//                                     intent.putExtra("name", sResult[1]);
-//                                     intent.putExtra("pwd", sResult[2]);
                                      startActivity(intent);
                                      Toast.makeText(MainActivity.this, "로그인했습니다", Toast.LENGTH_SHORT).show();
                                  } else {

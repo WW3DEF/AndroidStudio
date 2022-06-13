@@ -1,10 +1,8 @@
 package com.example.prj;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -22,6 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -59,7 +59,6 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
         SessionManager sessionManager = new SessionManager(getApplicationContext());
         TextView tvName = findViewById(R.id.tvName);
         TextView tvId = findViewById(R.id.tvId);
-
         tvName.setText(sessionManager.getName());
         tvId.setText(sessionManager.getId());
     }
@@ -194,6 +193,16 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
     }
     public void ClickLogout(View view){
         showLogoutDialog();
+    }
+    public void ClickNoteAdd(View view) {
+        redirectActivity(this, NoteAdd.class);
+    }
+    public void ClickSearch(View view) {
+        SessionManager sessionManager = new SessionManager(getApplicationContext());
+        TextView etMsearch = findViewById(R.id.etMSearch);
+        String searchCon = etMsearch.getText().toString();
+        sessionManager.setSearch(searchCon);
+        redirectActivity(this, SearchResult.class);
     }
     public void dataDelete(String id) {
         new Thread() {

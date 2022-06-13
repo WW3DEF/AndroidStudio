@@ -34,4 +34,11 @@ public class SessionManager {
     public String getName(){
         return sharedPreferences.getString("KEY_NAME","");
     }
+    public void setSearch(String search){
+        editor.putString("KEY_SEARCH", search);
+        editor.commit();
+    }
+    public String getSearch() {
+        return sharedPreferences.getString("KEY_SEARCH", "");
+    }
 }
